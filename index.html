@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>cs2-montage</title>
+<style>
+  :root{
+    --ground:#12110f; --panel:#1a1917; --rule:#2d2b27;
+    --ink:#e8e6e2; --dim:#8f8b84; --go:#9ac02c;
+  }
+  *{box-sizing:border-box}
+  body{
+    margin:0; background:var(--ground); color:var(--ink);
+    font:16px/1.65 system-ui,-apple-system,Segoe UI,sans-serif;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:42rem;margin:0 auto;padding:3rem 1.25rem 5rem}
+  h1{font-size:2rem;line-height:1.1;margin:0 0 .5rem;letter-spacing:-.01em}
+  .tag{color:var(--go);font-size:.75rem;letter-spacing:.18em;
+       text-transform:uppercase;margin:0 0 1.5rem}
+  h2{font-size:1.15rem;margin:2.5rem 0 .5rem}
+  p{margin:0 0 1rem;color:var(--dim)}
+  strong{color:var(--ink)}
+  ul{color:var(--dim);padding-left:1.2rem}
+  li{margin:.35rem 0}
+  code{background:var(--panel);border:1px solid var(--rule);
+       padding:.1em .35em;font-size:.9em;color:var(--ink)}
+  a{color:var(--go)}
+  footer{margin-top:3rem;padding-top:1.25rem;border-top:1px solid var(--rule);
+         font-size:.8rem;color:var(--dim)}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <p class="tag">Personal software</p>
+  <h1>cs2-montage</h1>
+  <p><strong>A single-user tool that turns my own Counter-Strike 2 gameplay
+  recordings into short vertical highlight videos, and uploads them to my own
+  YouTube channel.</strong></p>
+
+  <h2>What it does</h2>
+  <p>It watches the game's own telemetry feed while I play, tells OBS when to
+  record, cuts clips around the moments I got a kill, assembles them into a
+  short montage with licensed music, and stages the result for me to review.
+  Videos I approve are uploaded to my channel.</p>
+
+  <h2>Who can use it</h2>
+  <p>Only me. It runs on one desktop computer, is not distributed, has no
+  sign-up, no server, and no other users. It is not a product and is not
+  offered to anyone else.</p>
+
+  <h2>Why it asks for Google access</h2>
+  <ul>
+    <li><code>youtube.upload</code> — to upload finished videos to my channel.</li>
+    <li><code>yt-analytics.readonly</code> — to read how those videos performed,
+        so the tool can tell which editing choices worked.</li>
+    <li><code>drive.file</code> — to store finished videos in my own Drive
+        instead of filling the local disk. This is the narrow Drive scope: it
+        can only touch files the application itself created.</li>
+  </ul>
+
+  <h2>Data</h2>
+  <p>It handles my gameplay footage and my own channel's statistics, entirely
+  on my computer and in my own Google account. Nothing is sent to any third
+  party. See the <a href="privacy.html">privacy policy</a>.</p>
+
+  <footer>
+    cs2-montage &middot; personal project &middot;
+    <a href="privacy.html">Privacy policy</a>
+  </footer>
+</div>
+</body>
+</html>
