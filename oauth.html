@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>cs2-montage — TikTok authorisation</title>
+<title>cs2-montage — authorisation</title>
 <style>
 :root{
   --ground:#12110f; --panel:#1a1917; --rule:#2d2b27;
@@ -35,14 +35,14 @@ code{background:var(--panel);padding:.1rem .35rem;border-radius:3px;
 </head>
 <body>
 <main>
-  <h1>TikTok authorisation</h1>
+  <h1>Authorisation code</h1>
   <p id="lede">Reading the authorisation code…</p>
 
   <div class="code" id="code" hidden></div>
   <button id="copy" hidden>Copy the code</button>
 
   <p class="note">
-    Paste it into the terminal where <code>cs2 auth --tiktok</code> is waiting.
+    Paste it into the terminal where <code>cs2 auth</code> is waiting.
     The code is <strong>single use and expires within minutes</strong> — if it
     is refused, run the command again for a fresh one rather than reusing this
     page.
@@ -51,9 +51,11 @@ code{background:var(--panel);padding:.1rem .35rem;border-radius:3px;
 
 <script>
 /* Everything happens here in the browser. This page has no server, stores
-   nothing, and sends nothing anywhere: it exists only because TikTok refuses
-   to redirect to a loopback address, so the code cannot be caught on a local
-   port the way the Google flow catches it. */
+   nothing, and sends nothing anywhere: it exists only because neither TikTok
+   nor Instagram will redirect to a loopback address, so the code cannot be
+   caught on a local port the way the Google flow catches it. One page serves
+   both — the code is the code, and a second copy would be a second thing to
+   keep in step. */
 (function () {
   var q = new URLSearchParams(location.search);
   var code = q.get("code");
@@ -64,13 +66,14 @@ code{background:var(--panel);padding:.1rem .35rem;border-radius:3px;
 
   if (err) {
     lede.className = "err";
-    lede.textContent = "TikTok refused the authorisation: " + err +
+    lede.textContent = "The provider refused the authorisation: " + err +
       (q.get("error_description") ? " — " + q.get("error_description") : "");
     return;
   }
   if (!code) {
     lede.textContent = "No authorisation code in this URL. Start from " +
-      "`cs2 auth --tiktok`, which prints the link to open.";
+      "`cs2 auth --tiktok` or `cs2 auth --instagram`, which print the " +
+      "link to open.";
     return;
   }
 
