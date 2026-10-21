@@ -69,6 +69,47 @@
   excluded from version control and from backups that leave the machine. No
   copy is held anywhere I do not control.</p>
 
+  <h2>TikTok</h2>
+  <p>For my own TikTok account (Bingo Bango Bongo) the tool uses TikTok's
+  Content Posting and Display APIs, with the scopes
+  <code>user.info.basic</code>, <code>video.upload</code>,
+  <code>video.publish</code> and <code>video.list</code>.</p>
+  <p><strong>What it accesses, and why:</strong></p>
+  <ul>
+    <li><strong>The authorised account's basic profile</strong>
+        (<code>user.info.basic</code>): to confirm which account I authorised.</li>
+    <li><strong>Posting options for that account</strong> (the nickname and the
+        privacy levels and limits TikTok allows it), fetched before a video is
+        posted so I can see and choose the settings on my own review page.</li>
+    <li><strong>The videos I upload</strong> (<code>video.upload</code>,
+        <code>video.publish</code>): my own gameplay montages, with captions,
+        sent to my own account either as drafts or, after I approve a
+        specific video and its settings on my review page, as a direct post.</li>
+    <li><strong>My own videos' counts</strong> (<code>video.list</code>): the
+        video id, caption, length, and view, like, comment and share counts of
+        videos on my account, so I can see how my own videos perform. Retention
+        figures that TikTok Studio shows me while I am signed in to my own
+        account are recorded too.</li>
+  </ul>
+  <p><strong>Where it is stored:</strong> only on my own computer. The
+  TikTok access and refresh tokens are in a local secrets file that is excluded
+  from version control. The cached posting options, my per-video approval
+  records, and the video ids and counts are in local files and a local
+  database. Nothing is copied to a server I run, because there is none.</p>
+  <p><strong>Sharing:</strong> TikTok data is not sold, shared or transferred
+  to anyone, and is not used for advertising. It is only sent back to TikTok's
+  own APIs.</p>
+  <p><strong>Retention:</strong> tokens are kept until I revoke access.
+  Approval records, video ids and counts are kept for as long as I keep my own
+  records of my own videos. There is no one else's TikTok data to retain.</p>
+  <p><strong>Revoking access:</strong> remove this app from the
+  apps connected to my account in the TikTok app's settings (under Security
+  and permissions). TikTok then
+  invalidates its tokens, and the tool can no longer reach the account. To also
+  erase the local copies, I delete the token entry in the local secrets file and
+  the local TikTok files and database rows by hand; the tool has no automatic
+  deletion.</p>
+
   <h2>Other people appearing in the footage</h2>
   <p>Counter-Strike 2's kill feed shows the in-game display names of other
   players in the same match. Those names appear in published gameplay clips, as
